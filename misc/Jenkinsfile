@@ -10,6 +10,9 @@ node {
        sh 'npm install --only=dev'
        sh 'npm test'
      }
+
+     slackSend color: 'good', message: 'Boo Yea'
+
    }
    //stage('docker build/push') {
    //  docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
