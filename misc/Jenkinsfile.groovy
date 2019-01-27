@@ -1,23 +1,23 @@
 node {
    def commit_id
 
-   //def getBuildInstanceFor(projectName, buildNumber) {
-   // return Jenkins.getInstance().getItemByFullName(projectName).getBuildByNumber(buildNumber)
-   //}
+   // def getBuildInstanceFor(projectName, buildNumber) {
+   //  return Jenkins.getInstance().getItemByFullName(projectName).getBuildByNumber(buildNumber)
+   // }
 
-   def getCommitsRange(projectName, buildNumber) {
-    def currentBuild = getBuildInstanceFor(projectName, buildNumber)
-    def previousBuild = getBuildInstanceFor(projectName, buildNumber - 1)
-    def currentCommitHash = currentBuild.getAction(hudson.plugins.git.util.BuildData.class).lastBuiltRevision.sha1String
-    def previousCommitHash = previousBuild.getAction(hudson.plugins.git.util.BuildData.class).lastBuiltRevision.sha1String
+   // def getCommitsRange(projectName, buildNumber) {
+   //  def currentBuild = getBuildInstanceFor(projectName, buildNumber)
+   //  def previousBuild = getBuildInstanceFor(projectName, buildNumber - 1)
+   //  def currentCommitHash = currentBuild.getAction(hudson.plugins.git.util.BuildData.class).lastBuiltRevision.sha1String
+   //  def previousCommitHash = previousBuild.getAction(hudson.plugins.git.util.BuildData.class).lastBuiltRevision.sha1String
 
-    return [
-        projectName: projectName,
-        current: currentCommitHash,
-        previous: previousCommitHash
-    ]
+   //  return [
+   //      projectName: projectName,
+   //      current: currentCommitHash,
+   //      previous: previousCommitHash
+   //  ]
 
-   }
+   // }
 
    stage('Preparation') {
      checkout scm
