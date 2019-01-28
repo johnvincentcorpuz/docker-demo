@@ -39,7 +39,7 @@ pipeline {
             //print "currentCommitHash:${currentCommitHash}"
             //print "previousCommitHash:${previousCommitHash}"
             print "Project Name: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}"
-            def commitsRange = getCommitsRange(env.JOB_NAME, env.BUILD_NUMBER)
+            def commitsRange = getCommitsRange(env.JOB_NAME, env.BUILD_NUMBER.toInteger())
             print commitsRange
          }
 
