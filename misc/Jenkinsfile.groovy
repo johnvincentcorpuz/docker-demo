@@ -1,9 +1,9 @@
 node {
    def commit_id
 
-   // def getBuildInstanceFor(projectName, buildNumber) {
-   //  return Jenkins.getInstance().getItemByFullName(projectName).getBuildByNumber(buildNumber)
-   // }
+   def getBuildInstanceFor(projectName, buildNumber) {
+    return Jenkins.getInstance().getItemByFullName(projectName).getBuildByNumber(buildNumber)
+   }
 
    // def getCommitsRange(projectName, buildNumber) {
    //  def currentBuild = getBuildInstanceFor(projectName, buildNumber)
