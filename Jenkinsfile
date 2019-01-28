@@ -35,13 +35,14 @@ pipeline {
          //def gitData=getCommitsRange()
          script {
           def author = ""
-          def changeSet = currentBuild.rawBuild.changeSets               
+          def changeSet = currentBuild.rawBuild.changeSets
+          print changeSet.toString()
           for (int i = 0; i < changeSet.size(); i++) 
           {
              def entries = changeSet[i].items;
-             for (int i = 0; i < changeSet.size(); i++) 
+             for (int j = 0; j < changeSet.size(); j++) 
                       {
-                                 def entries = changeSet[i].items;
+                                 def entries = changeSet[j].items;
                                  def entry = entries[0]
                                  author += "${entry.author}"
                       } 
