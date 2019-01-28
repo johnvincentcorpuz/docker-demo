@@ -34,10 +34,12 @@ pipeline {
                                           echo "Git commiter email: $GIT_COMMITTER_EMAIL"'''
          //def gitData=getCommitsRange()
          script {
-            def currentCommitHash = currentBuild.getAction(hudson.plugins.git.util.BuildData.class).lastBuiltRevision.sha1String
-            def previousCommitHash = currentBuild.previousBuild(hudson.plugins.git.util.BuildData.class).lastBuiltRevision.sha1String
-            print "currentCommitHash:${currentCommitHash}"
-            print "previousCommitHash:${previousCommitHash}"
+            //def currentCommitHash = currentBuild.getAction(hudson.plugins.git.util.BuildData.class).lastBuiltRevision.sha1String
+            //def previousCommitHash = currentBuild.previousBuild(hudson.plugins.git.util.BuildData.class).lastBuiltRevision.sha1String
+            //print "currentCommitHash:${currentCommitHash}"
+            //print "previousCommitHash:${previousCommitHash}"
+            def commitsRange = getCommitsRange(env.JOB_NAME, env.BUILD_NUMBER)
+            print commitsRange
          }
 
       }
@@ -63,3 +65,10 @@ def getCommitsRange(projectName, buildNumber) {
         previous: previousCommitHash
     ]
 } 
+
+def getGitInfo() {
+    def changeLogSets = currentBuild.changeSets
+
+
+
+}
