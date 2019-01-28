@@ -33,6 +33,22 @@ pipeline {
                                           echo "Git author name: $GIT_AUTHOR_NAME"
                                           echo "Git commiter email: $GIT_COMMITTER_EMAIL"'''
          //def gitData=getCommitsRange()
+         script {
+          def author = ""
+          def changeSet = currentBuild.rawBuild.changeSets               
+          for (int i = 0; i < changeSet.size(); i++) 
+          {
+             def entries = changeSet[i].items;
+             for (int i = 0; i < changeSet.size(); i++) 
+                      {
+                                 def entries = changeSet[i].items;
+                                 def entry = entries[0]
+                                 author += "${entry.author}"
+                      } 
+           }
+          print author;
+          }
+
       }
     }
    
