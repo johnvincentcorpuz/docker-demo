@@ -36,13 +36,15 @@ pipeline {
          script {
             def author = ""
             def changeSet = currentBuild.rawBuild.changeSets
+            print "ChangeSet should show here on groovy script\n"
             print changeSet.toString()
             for (int i = 0; i < changeSet.size(); i++) 
             {
               def entries = changeSet[i].items;
               def entry = entries[0]
-              author = "${entriestry.author}"
-              print author;
+              author = "${entry.author}"
+
+              print "Author is: ${author}" 
                  
             }
           
