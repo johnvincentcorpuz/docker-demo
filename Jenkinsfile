@@ -46,6 +46,10 @@ pipeline {
                  
             }
           
+             for (cause in currentBuild.getCauses()) {
+                print cause
+             }
+
           }
 
       }
