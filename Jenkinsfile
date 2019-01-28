@@ -34,29 +34,14 @@ pipeline {
                                           echo "Git commiter email: $GIT_COMMITTER_EMAIL"'''
          //def gitData=getCommitsRange()
          script {
-            def author = ""
-            def changeSet = currentBuild.rawBuild.changeSets
-            print "ChangeSet should show here on groovy script\n"
-            print changeSet.toString()
-            for (int i = 0; i < changeSet.size(); i++) 
-            {
-              def entries = changeSet[i].items;
-              def entry = entries[0]
-              author = "${entry.author}"
-
-              print "Author is: ${author}" 
-                 
-            }
-          
-             for (cause in currentBuild.getBuildCauses()) {
-
-                print "CurrentBuildCause: ${cause}"
-             }
-
-          }
+            def currentCommitHash = currentBuild.getAction(hudson.plugins.git.util.BuildData.class).lastBuiltRevision.sha1String
+            def previousCommitHash = currentBuild.previousBuild(hudson.plugins.git.util.BuildData.class).lastBuiltRevision.sha1String
+            print "currentCommitHash:${currentCommitHash}"
+            print "previousCommitHash:${previousCommitHash}"
+         }
 
       }
-    }
+   }
    
   }
 }
