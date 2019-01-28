@@ -49,7 +49,8 @@ pipeline {
             }
           
              for (cause in currentBuild.getCauses()) {
-                print cause
+
+                print "CurrentBuildCause: ${cause}"
              }
 
           }
